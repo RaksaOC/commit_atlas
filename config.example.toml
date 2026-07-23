@@ -1,0 +1,38 @@
+# Commit Atlas — example config
+# Copy to config.toml and edit, then run: python generate.py -c config.toml
+
+workspace_root = "."   # repo paths relative to this (from the config file dir)
+
+
+[author]
+name = "Your Name"
+emails = ["you@example.com"]
+
+[range]
+since = "2025-01-01"
+until = "2025-03-31"
+
+[display]
+subtitle = "Commits across 3 months"
+disclaimer = ""
+# Optional map from repo id → public display name
+# aliases = { "private-codename" = "frontend" }
+
+[options]
+count_mr_events = true
+mr_into_branch = "dev"   # Match GitLab merges into this branch name
+output_dir = "out"
+
+[privacy]
+include_paths = false    # Keep false for shareable JSON/HTML
+
+[[repos]]
+name = "backend"
+path = "backend"         # relative to workspace_root
+branches = ["origin/main", "main", "origin/dev", "dev"]
+
+[[repos]]
+name = "frontend"
+path = "frontend"
+display = "web"          # optional public label
+branches = ["origin/main", "main"]
